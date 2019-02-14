@@ -2,9 +2,10 @@ language: shell
 script:
 - echo "test"
 before_deploy:
-- echo "before deploy"
+- echo "before deploy" && git tag x
 deploy:
   provider: script
   script: echo "deploying"
+  skip_cleanup: true
   on:
     branch: master
