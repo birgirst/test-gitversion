@@ -1,0 +1,10 @@
+language: shell
+script:
+- echo "test"
+before_deploy:
+- echo "before deploy"
+deploy:
+  provider: script
+  script: echo "deploying"
+  on:
+    branch: master
