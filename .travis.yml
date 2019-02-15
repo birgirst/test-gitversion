@@ -1,11 +1,17 @@
 language: shell
 script:
 - echo "test"
-before_deploy:
-- echo "before deploy" && git tag x
+after_success:
+  if ([ "$TRAVIS_BRANCH" == "master" ] || [ ! -z "$TRAVIS_TAG" ]) && 
+      [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+    echo "This will deploy!"
+  else
+    echo "This will not deploy!"
+  fi ] ])
 deploy:
-  provider: script
-  script: echo "deploying"
+- provider: script
+  script: echo "deploying since tags"
   skip_cleanup: true
   on:
+    tags: true
     branch: master
