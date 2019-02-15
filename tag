@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -x
+set -evuo pipefail
 env
 if ([ "$TRAVIS_BRANCH" == "master" ] && [[ -z "$TRAVIS_TAG" ]]) &&
     [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
